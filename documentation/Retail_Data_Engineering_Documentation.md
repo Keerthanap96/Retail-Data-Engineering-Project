@@ -1181,8 +1181,10 @@ Pipeline monitoring
 Python scripts were developed to interact with AWS S3.
 
 Scripts Used:
-src/aws_s3_test.py
-src/s3_upload.py
+### AWS Scripts
+
+- [AWS Connectivity Test](src/aws_s3_test.py)
+- [S3 Upload Pipeline](src/s3_upload.py)
 
 Capabilities:
 Bucket connectivity testing
@@ -1280,7 +1282,7 @@ Payment Method Distribution
 
 Screenshot:
 
-![Executive Dashboard](../screenshots/powerbi/Executive Dashboard.png)
+![Executive Dashboard](../screenshots/powerbi/Executive_dashboard.png)
 
 Business Insight:
 
@@ -1299,7 +1301,7 @@ Product Performance Summary Table
 
 Screenshot:
 
-![Product Analysis](../screenshots/powerbi/Product Analysis.png)
+![Product Analysis](../screenshots/powerbi/Product_Analysis.png)
 
 Business Insight:
 
@@ -1317,7 +1319,7 @@ City Performance Summary
 
 Screenshot:
 
-![Location Analysis](../screenshots/powerbi/Location Analysis.png)
+![Location Analysis](../screenshots/powerbi/Location_Analysis.png)
 
 Business Insight:
 
@@ -1335,7 +1337,7 @@ Payment Performance Summary
 
 Screenshot:
 
-![Payment & Channel](../screenshots/powerbi/Payment & Channel.png)
+![Payment & Channel](../screenshots/powerbi/Payment_Channel.png)
 
 Business Insight:
 
@@ -1353,7 +1355,7 @@ Monthly Performance Summary
 
 Screenshot:
 
-![Time Trends](../screenshots/powerbi/Time Trends.png)
+![Time Trends](../screenshots/powerbi/Time_Trends.png)
 
 Business Insight:
 
@@ -1376,8 +1378,7 @@ PII Masking Status
 
 Screenshot:
 
-![Data Quality](../screenshots/powerbi/DataQuality.png)
-
+![Data Quality](../screenshots/powerbi/Data_Quality.png)
 Business Insight:
 The final curated dataset achieved high data quality standards through duplicate removal, missing value treatment, negative value correction, and customer data masking.
 
