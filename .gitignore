@@ -1,0 +1,23 @@
+# Virtual Environment
+venv/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Environment Variables
+.env
+
+# Database
+retail_agent/retail.db
+
+# Raw Dataset
+data/raw/
+
+# Logs
+logs/*.log
+logs/*.txt
+
+# OS Files
+.DS_Store
+Thumbs.db

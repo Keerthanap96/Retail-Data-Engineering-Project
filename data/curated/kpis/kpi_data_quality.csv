@@ -1,0 +1,7 @@
+Metric,Value
+Original Rows,8494
+Missing Prices Before,809
+Missing Prices After,0
+Negative Rows Removed,93
+Duplicate Rows Removed,487
+Final Rows,7914

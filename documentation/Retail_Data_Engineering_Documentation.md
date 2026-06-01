@@ -1,0 +1,1700 @@
+# Retail Sales Data Processing and Business Insights Generation
+
+## 1. Executive Summary
+This project implements an end-to-end Retail Data Engineering Solution for ABC Retail Solutions. The objective is to transform raw retail transaction data into a reliable, analytics-ready dataset that supports business intelligence, reporting, and decision-making.
+
+The solution ingests retail transaction data from multiple source systems, performs extensive data quality checks, cleans and standardizes records, validates business rules, applies PII masking techniques, and generates curated datasets for downstream analytics.
+
+The project includes:
+
+- Automated data ingestion pipeline
+- Data cleaning and validation framework
+- KPI generation and business reporting datasets
+- Star schema data model
+- AWS S3 cloud integration
+- Interactive Power BI dashboard
+- AI-powered Natural Language to SQL (NL-SQL) Agent
+
+The final solution enables business users to analyze revenue trends, category performance, city-wise sales, customer behavior, product performance, and payment trends through both dashboards and natural language queries.
+
+This architecture is scalable, modular, and cloud-ready, making it suitable for future enterprise-level retail analytics applications.
+
+
+## 2. Business Problem Statement
+Retail businesses generate large volumes of transaction data from multiple cities, products, customers, and payment channels. However, raw transactional datasets often contain data quality issues such as missing values, duplicate records, inconsistent formats, and sensitive customer information.
+
+The objective of this project is to design and implement an end-to-end Retail Data Engineering Solution that transforms raw retail transaction data into a clean, validated, analytics-ready dataset. The solution should support business reporting, KPI generation, dashboard analytics, and natural language querying.
+
+The project focuses on:
+
+Data ingestion and processing
+Data cleaning and validation
+Business KPI generation
+Analytical data modeling
+Dashboard reporting using Power BI
+Natural Language to SQL analytics through an AI-powered agent
+Cloud-based storage using AWS S3
+
+The final solution enables business users to derive actionable insights from retail sales data and make data-driven decisions efficiently.
+
+
+## 3. Solution Architecture
+
+3.1 Architecture Overview
+The Retail Data Engineering Solution follows a layered architecture that transforms raw retail transaction data into business-ready analytical datasets. The solution includes data ingestion, data cleaning, quality validation, transformation, KPI generation, cloud integration, dashboard reporting, and an AI-powered NL-SQL analytics layer.
+
+The architecture is designed to ensure:
+Scalability
+Data Quality
+Reusability
+Business Insight Generation
+Cloud Readiness
+
+The complete workflow consists of the following stages:
+
+Raw Data Ingestion
+Data Cleaning and Preprocessing
+Data Quality Validation
+Business Transformation
+KPI Generation
+Curated Dataset Creation
+AWS S3 Cloud Storage
+Power BI Analytics Dashboard
+NL-SQL Agent for Business Querying
+
+3.2 Solution Architecture Diagram
+
+![Solution Architecture](../architecture/solution_architecture.png)
+
+
+3.3 Component Description
+
+| Component            | Purpose                                             |
+| -------------------- | --------------------------------------------------- |
+| Raw Dataset          | Source retail transaction dataset                   |
+| Ingestion Layer      | Loads raw data into processing pipeline             |
+| Data Cleaning Layer  | Handles missing values, duplicates, invalid records |
+| Validation Layer     | Performs quality checks and auditing                |
+| Transformation Layer | Generates business metrics and derived attributes   |
+| KPI Layer            | Creates analytical KPI datasets                     |
+| Curated Dataset      | Final analytics-ready dataset                       |
+| AWS S3 Storage       | Cloud storage for processed data                    |
+| Power BI Dashboard   | Interactive reporting and visualization             |
+| NL-SQL Agent         | Converts business questions into SQL queries        |
+
+3.4 Architecture Benefits
+The implemented architecture provides several advantages:
+
+Automated data processing pipeline
+Consistent data quality controls
+Separation between raw and curated data layers
+Reusable KPI generation framework
+Cloud integration using AWS S3
+Self-service analytics through Power BI
+Business-friendly querying through NL-SQL Agent
+
+This architecture ensures that retail business stakeholders can access trusted, analytics-ready data while minimizing manual intervention.
+
+
+## 4. Data Flow Diagram
+
+4.1 Overview
+The data flow describes how retail transaction data moves through the various stages of the data engineering pipeline. The pipeline follows an ETL-based approach where data is extracted from source files, transformed through multiple processing stages, validated for quality, and finally loaded into analytical systems for reporting and business intelligence.
+
+The objective of the data flow is to ensure that only clean, validated, and business-ready data reaches the reporting and analytics layers.
+
+4.2 Data Flow Diagram
+![Data Flow Diagram](../architecture/data_flow_diagram.png)
+
+4.3 Data Flow Stages
+Stage 1 — Raw Data Acquisition
+
+The retail transaction dataset is collected from source files and stored in the raw data layer.
+
+Output:
+data/raw/
+
+Stage 2 — Data Profiling
+The profiling process analyzes dataset structure, data types, missing values, duplicates, and statistical distributions.
+
+Script Used:
+src/profiling.py
+
+Output:
+logs/
+outputs/
+
+Stage 3 — Data Cleaning
+The cleaning process removes invalid records, handles missing values, standardizes formats, and prepares the dataset for business processing.
+
+Script Used:
+src/data_cleaning.py
+
+Output:
+outputs/cleaning_summary.csv
+
+Stage 4 — Data Quality Validation
+Data quality checks are performed to validate completeness, consistency, uniqueness, and integrity.
+
+Validation includes:
+Duplicate detection
+Missing value checks
+Revenue validation
+Customer data validation
+
+Scripts Used:
+src/data_quality_audit.py
+src/business_validation_audit.py
+src/duplicate_audit.py
+Stage 5 — Data Transformation
+
+Business calculations and derived fields are generated.
+
+Examples include:
+Revenue
+Discount Amount
+Net Revenue
+Year
+Month
+Quarter
+Masked Customer Information
+
+Script Used:
+src/transformation.py
+
+Stage 6 — KPI Generation
+Business KPIs are generated to support dashboard reporting and analytical insights.
+
+KPIs Generated:
+Executive Summary KPIs
+Product Analysis KPIs
+City Analysis KPIs
+Payment Analysis KPIs
+Time Trend KPIs
+Data Quality KPIs
+
+Script Used:
+src/kpi_generation.py
+
+Stage 7 — Curated Dataset Creation
+The final transformed dataset is stored in the curated layer for reporting and analytics.
+
+Output:
+data/curated/retail_master_curated.csv
+
+Stage 8 — AWS Cloud Storage
+The curated dataset is uploaded to AWS S3 to demonstrate cloud integration and scalable storage.
+
+Script Used:
+src/s3_upload.py
+
+Storage Location:
+AWS S3 Bucket
+retail-data-engineering-keerthana
+
+Stage 9 — Analytics Consumption
+The processed dataset is consumed by:
+
+Power BI Dashboard
+Used for:
+
+Executive Reporting
+Product Analytics
+Location Analytics
+Payment Analytics
+Time Trend Analysis
+Data Quality Monitoring
+
+NL-SQL Agent
+Used for:
+
+Natural Language Business Queries
+SQL Generation
+Automated Insights
+Interactive Data Exploration
+
+4.4 Data Flow Benefits
+The implemented data flow provides:
+
+End-to-end traceability
+Improved data quality
+Automated business KPI generation
+Cloud-ready architecture
+Self-service analytics capability
+Faster decision-making through reporting and AI-driven insights
+
+
+## 5. Dataset Description
+
+5.1 Dataset Overview
+The project uses a retail sales transaction dataset containing customer, product, payment, and sales information. The dataset was processed through multiple data engineering stages to create an analytics-ready curated dataset for reporting and business intelligence.
+
+The final curated dataset contains cleaned, validated, transformed, and enriched business data suitable for dashboard reporting and AI-powered analytics.
+
+5.2 Dataset Statistics
+
+| Metric             | Value                     |
+| ------------------ | ------------------------- |
+| Total Records      | 7,914                     |
+| Unique Customers   | 1,960                     |
+| Cities Covered     | 5                         |
+| Product Categories | 4                         |
+| Payment Methods    | 4                         |
+| Years Covered      | 2025 - 2026               |
+| Final Dataset      | retail_master_curated.csv |
+
+5.3 Business Entities
+The dataset contains information across the following business domains:
+
+Customer Information
+Customer ID
+Customer Name
+Email
+Phone Number
+City
+Product Information
+Product ID
+Product Name
+Product Category
+
+Categories include:
+
+Electronics
+Furniture
+Home Appliances
+Clothing
+Transaction Information
+Transaction ID
+Purchase Location
+Payment Method
+Quantity Purchased
+Discount Applied
+Transaction Date
+Sales Information
+Revenue
+Discount Amount
+Net Revenue
+
+5.4 Geographic Coverage
+The dataset contains transactions from the following cities:
+
+Bangalore
+Chennai
+Hyderabad
+Mumbai
+Delhi
+
+These cities are used for location-based business analysis and performance reporting.
+
+5.5 Payment Channels
+The dataset supports multiple payment methods:
+
+UPI
+Card
+Cash
+Net Banking
+
+These payment channels are analyzed in the dashboard to understand customer payment preferences and revenue contribution.
+
+5.6 Derived Business Fields
+Additional analytical columns were created during transformation:
+
+| Derived Field   | Purpose                                 |
+| --------------- | --------------------------------------- |
+| Revenue         | Sales value before discount             |
+| Discount Amount | Discount value applied                  |
+| Net Revenue     | Revenue after discount                  |
+| Year            | Year extracted from transaction date    |
+| Month           | Month extracted from transaction date   |
+| Quarter         | Quarter extracted from transaction date |
+| Email Masked    | Privacy-compliant customer email        |
+| Phone Masked    | Privacy-compliant customer phone number |
+These fields improve reporting, trend analysis, and data privacy compliance.
+
+5.7 Data Privacy Controls
+To protect customer information, personally identifiable information (PII) was masked during transformation.
+
+Examples:
+
+Email Masking
+
+johnsmith@gmail.com
+↓
+jo***@gmail.com
+
+
+Phone Masking
+
+9876543210
+↓
+98******10
+
+This ensures that customer information remains protected while maintaining analytical usability.
+
+5.8 Final Curated Dataset
+The final curated dataset is stored at:
+
+data/curated/retail_master_curated.csv
+
+This dataset serves as the single source of truth for:
+
+Power BI Dashboard Reporting
+KPI Generation
+Business Analysis
+NL-SQL Agent Queries
+AWS Cloud Storage
+
+
+## 6. Data Ingestion
+
+6.1 Overview
+Data ingestion is the first stage of the Retail Data Engineering Pipeline. The objective of this phase is to collect, consolidate, and prepare raw retail transaction data for downstream processing.
+
+The project ingests data from multiple source files and combines them into a unified dataset for further analysis.
+
+6.2 Source Files
+The solution uses the following source datasets:
+| Source File     | Description                        |
+| --------------- | ---------------------------------- |
+| retail_data1    | Retail transaction data            |
+| retail_data2    | Additional retail transaction data |
+| product_details | Product master information         |
+These files are stored in the raw data layer and serve as the primary input for the ETL pipeline.
+
+6.3 Ingestion Process
+The ingestion process performs the following activities:
+
+Load source files into memory.
+Validate file structure.
+Merge transaction datasets.
+Join product master information.
+Standardize column formats.
+Prepare the consolidated dataset for profiling and validation.
+
+Script Used:
+src/ingestion.py
+
+6.4 Data Consolidation
+The ingestion layer combines transaction records from multiple sources and enriches them with product information.
+
+Process:
+retail_data1
+      +
+retail_data2
+      +
+product_details
+      ↓
+Consolidated Retail Dataset
+
+This ensures that all product and transaction attributes are available for business analysis.
+
+6.5 Ingestion Output
+The output of the ingestion phase is a consolidated retail dataset that is passed to subsequent processing stages including:
+
+Data Profiling
+Data Cleaning
+Data Quality Validation
+Data Transformation
+KPI Generation
+6.6 Benefits of the Ingestion Layer
+
+The ingestion layer provides:
+
+Centralized data collection
+Multi-source data integration
+Improved data consistency
+Simplified downstream processing
+Scalable architecture for future data sources
+
+The ingestion process establishes a reliable foundation for the entire data engineering workflow.
+
+
+## 7. Data Cleaning Strategy
+
+7.1 Overview
+Data cleaning is a critical stage in the Retail Data Engineering Pipeline. Raw retail transaction data often contains inconsistencies, missing values, duplicate records, invalid quantities, and non-standardized formats that can negatively impact reporting accuracy and business decision-making.
+
+The objective of the data cleaning phase is to improve data quality and create a reliable foundation for downstream analytics.
+
+7.2 Data Cleaning Objectives
+The primary objectives of the cleaning process are:
+Handle missing values
+Remove duplicate records
+Eliminate invalid transactions
+Standardize categorical data
+Standardize product information
+Improve overall dataset consistency
+
+Script Used:
+src/data_cleaning.py
+
+7.3 Missing Value Handling
+The retail dataset contained missing values in product pricing information.
+
+Approach:
+Missing prices were identified.
+Product master data was used as a lookup source.
+Missing prices were automatically populated using the corresponding product information.
+
+Benefits:
+Prevents revenue calculation errors.
+Improves KPI accuracy.
+Reduces data loss.
+
+7.4 Invalid Quantity Removal
+Business validation rules require product quantities to be positive.
+
+Approach:
+Records containing negative quantities were identified.
+Invalid transactions were removed from the dataset.
+
+Example:
+Quantity = -2
+
+↓
+
+Removed
+
+Benefits:
+Prevents incorrect revenue calculations.
+Maintains business rule consistency.
+
+7.5 Duplicate Record Removal
+Duplicate transactions can inflate revenue and distort business metrics.
+
+Approach:
+Transaction IDs were analyzed for duplicates.
+Duplicate records were identified and removed.
+
+Benefits:
+Ensures accurate sales reporting.
+Improves data integrity.
+
+7.6 Category Standardization
+
+Product categories were found in abbreviated formats.
+Standardization rules applied:
+| Original Value | Standardized Value |
+| -------------- | ------------------ |
+| ELEC           | Electronics        |
+| FURN           | Furniture          |
+| CLOTH          | Clothing           |
+| HOME           | Home Appliances    |
+
+Benefits:
+Consistent reporting.
+Improved dashboard filtering.
+Better business interpretation.
+
+7.7 Product Name Standardization
+Product names were standardized to eliminate formatting inconsistencies.
+
+Examples:
+Removal of extra spaces
+Consistent naming conventions
+Text normalization
+
+Benefits:
+Improved grouping accuracy.
+Better product-level analysis.
+
+7.8 Date Standardization
+Transaction dates were converted into a consistent datetime format.
+
+Benefits:
+Enables trend analysis.
+Supports month and quarter calculations.
+Improves time-series reporting.
+
+7.9 Data Cleaning Output
+The output of the cleaning stage is a standardized and validated dataset ready for:
+
+Data Quality Validation
+Business Transformations
+KPI Generation
+Dashboard Reporting
+
+7.10 Benefits of the Cleaning Framework
+The implemented cleaning framework provides:
+
+Improved data consistency
+Better reporting accuracy
+Reliable KPI calculations
+Reduced business risk
+Higher analytical confidence
+
+This stage significantly improves the quality and usability of retail transaction data before it enters the transformation and analytics layers.
+
+
+## 8. Data Quality Validation
+
+8.1 Overview
+
+Data quality validation ensures that the processed retail dataset meets business and analytical requirements before being used for reporting and decision-making.
+
+A dedicated validation framework was implemented to identify and monitor data quality issues throughout the ETL pipeline.
+
+The validation process focuses on:
+Completeness
+Accuracy
+Consistency
+Validity
+Uniqueness
+
+Scripts Used:
+src/data_quality_audit.py
+src/duplicate_audit.py
+src/business_validation_audit.py
+
+8.2 Data Quality Framework
+The implemented framework evaluates the dataset against multiple quality dimensions.
+
+| Quality Dimension | Validation Objective           |
+| ----------------- | ------------------------------ |
+| Completeness      | Detect missing values          |
+| Accuracy          | Validate business calculations |
+| Consistency       | Ensure standardized formats    |
+| Uniqueness        | Detect duplicate transactions  |
+| Validity          | Validate business rules        |
+
+8.3 Missing Value Validation
+Missing values can impact revenue calculations, KPI generation, and reporting accuracy.
+
+Validation Performed:
+Product price validation
+Mandatory field checks
+Null value identification
+
+Outcome:
+Missing prices were identified and corrected using product reference data.
+Critical fields were validated before transformation.
+
+8.4 Duplicate Transaction Validation
+Duplicate records can lead to incorrect revenue reporting and inaccurate business insights.
+
+Validation Performed:
+Transaction ID duplicate detection
+Duplicate transaction auditing
+
+Outcome:
+Duplicate records were identified.
+Duplicate transactions were removed during data cleaning.
+
+Output Generated:
+outputs/duplicate_transactions.csv
+
+8.5 Category Validation
+Product categories were validated against approved business categories.
+
+Approved Categories:
+Electronics
+Furniture
+Clothing
+Home Appliances
+
+Validation Objective:
+Detect invalid categories.
+Enforce category consistency.
+
+Outcome:
+Invalid categories were standardized.
+Business reporting consistency improved.
+
+8.6 Product Validation
+Product names and product identifiers were validated to ensure:
+
+Correct product mapping
+Accurate revenue calculations
+Consistent reporting
+
+Outcome:
+Product data was standardized and validated against reference data.
+
+8.7 Date Validation
+Transaction dates were validated to ensure:
+
+Valid date format
+Consistent datetime datatype
+Support for time-based analytics
+
+Outcome:
+Dates were standardized and converted into a uniform datetime format.
+
+8.8 Business Rule Validation
+Business validation rules were implemented to identify invalid transactions.
+
+Validation Rules:
+
+| Rule                | Expected Condition |
+| ------------------- | ------------------ |
+| Quantity Validation | Quantity > 0       |
+| Revenue Validation  | Revenue ≥ 0        |
+| Product Validation  | Valid Product ID   |
+| Category Validation | Approved Category  |
+
+Outcome:
+Invalid records were identified.
+Business rule violations were removed from the dataset.
+
+8.9 Audit Outputs
+The validation framework generates audit outputs to support transparency and monitoring.
+
+Examples:
+outputs/cleaning_summary.csv
+outputs/duplicate_transactions.csv
+logs/pipeline_execution_log.txt
+
+These outputs provide visibility into the quality of processed data.
+
+8.10 Benefits of Data Quality Validation
+The implemented validation framework provides:
+
+Improved reporting accuracy
+Reliable KPI generation
+Reduced business risk
+Increased confidence in analytical outputs
+Better governance of retail transaction data
+
+The validation layer ensures that only trusted and business-ready data progresses through the analytics pipeline.
+
+
+## 9. Transformation Logic
+
+9.1 Overview
+The transformation layer converts cleaned and validated retail transaction data into business-ready analytical datasets.
+
+This stage enriches the dataset by generating calculated metrics, time-based attributes, and privacy-compliant customer information.
+
+The transformation process improves the analytical value of the dataset and enables business reporting, KPI generation, and dashboard analytics.
+
+Script Used:
+src/transformation.py
+
+9.2 Transformation Objectives
+The transformation layer was designed to:
+
+Generate business metrics
+Create analytical dimensions
+Improve reporting capabilities
+Enable trend analysis
+Protect customer information
+
+9.3 Revenue Calculation
+Revenue represents the total sales value before discounts.
+
+Formula:
+Revenue = Price × Quantity
+
+| Price | Quantity | Revenue |
+| ----- | -------- | ------- |
+| 500   | 2        | 1000    |
+
+Purpose:
+Revenue reporting
+Product performance analysis
+Category performance analysis
+
+9.4 Discount Amount Calculation
+The discount amount represents the monetary value of discounts applied to a transaction.
+
+Formula:
+Discount Amount = Revenue × Discount
+
+| Revenue | Discount | Discount Amount |
+| ------- | -------- | --------------- |
+| 1000    | 10%      | 100             |
+
+Purpose:
+Promotion effectiveness analysis
+Discount impact measurement
+
+9.5 Net Revenue Calculation
+Net Revenue represents the final revenue after applying discounts.
+
+Formula:
+Net Revenue = Revenue − Discount Amount
+
+| Revenue | Discount Amount | Net Revenue |
+| ------- | --------------- | ----------- |
+| 1000    | 100             | 900         |
+
+Purpose:
+Executive reporting
+Profitability analysis
+Business performance tracking
+
+9.6 Time Dimension Generation
+Time-based analytical attributes were generated from transaction dates.
+
+Derived Fields:
+
+| Field   | Description       |
+| ------- | ----------------- |
+| Year    | Transaction Year  |
+| Month   | Transaction Month |
+| Quarter | Business Quarter  |
+
+Purpose:
+Monthly reporting
+Quarterly analysis
+Trend monitoring
+Time-series analytics
+
+9.7 Email Masking
+To protect customer privacy, email addresses were masked.
+
+Example:
+Original:
+johnsmith@gmail.com
+
+Masked:
+jo***@gmail.com
+
+Purpose:
+PII Protection
+Privacy Compliance
+Secure Analytics
+
+9.8 Phone Number Masking
+Customer phone numbers were masked to prevent exposure of sensitive information.
+
+Example:
+Original:
+9876543210
+
+Masked:
+98******10
+
+Purpose:
+Protect customer identity
+Support secure reporting
+Maintain compliance requirements
+
+9.9 Transformation Outputs
+The transformation layer generates:
+
+| Output          | Purpose              |
+| --------------- | -------------------- |
+| Revenue         | Sales Analysis       |
+| Discount Amount | Discount Analysis    |
+| Net Revenue     | Business Performance |
+| Year            | Time Analytics       |
+| Month           | Trend Analysis       |
+| Quarter         | Quarterly Reporting  |
+| Email Masked    | Privacy Protection   |
+| Phone Masked    | Privacy Protection   |
+
+9.10 Benefits of the Transformation Layer
+
+The implemented transformation framework provides:
+
+Business-ready analytical data
+Enhanced reporting capabilities
+KPI generation support
+Time-based trend analysis
+Improved data privacy
+Better decision-making support
+
+The transformation stage bridges the gap between raw transaction data and actionable business intelligence.
+
+
+## 10. KPI Generation
+
+10.1 Overview
+Key Performance Indicators (KPIs) were generated to measure business performance across multiple dimensions including revenue, customers, products, locations, payment methods, and data quality.
+
+The KPI generation layer transforms transaction-level data into aggregated business metrics that support executive reporting and decision-making.
+
+Script Used:
+src/kpi_generation.py
+
+10.2 KPI Framework
+The KPI framework was designed to answer key business questions such as:
+
+Which product categories generate the highest revenue?
+Which cities contribute the most sales?
+Who are the top customers?
+Which products perform best?
+Which payment methods are most frequently used?
+How does revenue change over time?
+What is the quality status of the dataset?
+
+10.3 Executive Summary KPIs
+The Executive Summary provides a high-level overview of business performance.
+Metrics Included:
+Total Revenue
+Total Transactions
+Total Customers
+Average Revenue Per Transaction
+Average Revenue Per Customer
+
+Output:
+data/curated/kpis/kpi_executive_summary.csv
+
+10.4 Category Analysis KPIs
+Category-level KPIs measure the contribution of each product category.
+
+Metrics Included:
+Revenue by Category
+Quantity Sold by Category
+Average Revenue per Category
+
+Categories:
+Electronics
+Furniture
+Clothing
+Home Appliances
+
+Output:
+data/curated/kpis/kpi_category_analysis.csv
+
+10.5 City Analysis KPIs
+Location-based KPIs help evaluate regional business performance.
+
+Metrics Included:
+Revenue by City
+Transaction Count by City
+Customer Distribution by City
+
+Cities Covered:
+Bangalore
+Chennai
+Hyderabad
+Mumbai
+Delhi
+
+Output:
+data/curated/kpis/kpi_city_analysis.csv
+
+10.6 Product Analysis KPIs
+Product KPIs identify top-performing and low-performing products.
+
+Metrics Included:
+Revenue by Product
+Quantity Sold by Product
+Product Ranking
+
+Output:
+data/curated/kpis/kpi_product_analysis.csv
+
+10.7 Customer Analysis KPIs
+Customer KPIs help understand purchasing behavior and customer value.
+
+Metrics Included:
+Revenue by Customer
+Transaction Frequency
+Customer Ranking
+
+Output:
+data/curated/kpis/kpi_customer_analysis.csv
+
+10.8 Payment Analysis KPIs
+Payment KPIs provide visibility into customer payment preferences.
+
+Metrics Included:
+Revenue by Payment Method
+Transaction Count by Payment Method
+Payment Method Distribution
+
+Payment Channels:
+UPI
+Card
+Cash
+Net Banking
+
+Output:
+data/curated/kpis/kpi_payment_analysis.csv
+
+10.9 Time Analysis KPIs
+Time-based KPIs support trend analysis and performance monitoring.
+
+Metrics Included:
+Monthly Revenue
+Quarterly Revenue
+Transaction Trends
+Seasonal Patterns
+
+Output:
+data/curated/kpis/kpi_time_analysis.csv
+
+10.10 Data Quality KPIs
+Data quality metrics monitor the health of the dataset.
+
+Metrics Included:
+Missing Values
+Duplicate Records
+Invalid Transactions
+Data Quality Score
+
+Output:
+data/curated/kpis/kpi_data_quality.csv
+
+10.11 KPI Outputs
+The KPI layer generates the following analytical datasets:
+
+kpi_executive_summary.csv
+kpi_category_analysis.csv
+kpi_city_analysis.csv
+kpi_product_analysis.csv
+kpi_customer_analysis.csv
+kpi_payment_analysis.csv
+kpi_time_analysis.csv
+kpi_data_quality.csv
+
+10.12 Business Value
+
+The KPI framework provides:
+Executive-level visibility
+Revenue performance tracking
+Customer behavior insights
+Product performance analysis
+Regional sales analysis
+Payment trend monitoring
+Data quality governance
+
+These KPIs form the foundation of the Power BI dashboard and support data-driven decision-making across the organization.
+
+
+## 11. Star Schema Design
+
+11.1 Overview
+To improve reporting performance and support analytical workloads, a Star Schema data model was implemented.
+
+The Star Schema organizes data into fact and dimension tables, making it easier to perform aggregations, filtering, and business analysis.
+
+Script Used:
+src/star_schema.py
+
+11.2 Star Schema Diagram
+
+![Star Schema Diagram](../architecture/star_schema.png)
+
+11.3 Star Schema Structure
+The implemented model consists of one central fact table and multiple dimension tables.
+
+Structure:
+
+DimCustomer
+      |
+      |
+DimProduct ---- FactSales ---- DimDate
+      |
+      |
+ DimLocation
+
+11.4 Fact Table
+FactSales
+The FactSales table stores measurable business events and transaction metrics.
+
+Key Attributes:
+Transaction ID
+Customer ID
+Product ID
+Date ID
+Location ID
+Quantity
+Revenue
+Discount Amount
+Net Revenue
+
+Purpose:
+Revenue Analysis
+Sales Trend Analysis
+KPI Reporting
+Business Performance Measurement
+
+11.5 Customer Dimension
+DimCustomer
+Stores customer-related information.
+
+Attributes:
+Customer ID
+Customer Name
+Email Masked
+Phone Masked
+
+Purpose:
+Customer Analytics
+Customer Segmentation
+Customer Revenue Analysis
+
+11.6 Product Dimension
+DimProduct
+Stores product information.
+
+Attributes:
+Product ID
+Product Name
+Category
+
+Purpose:
+Product Performance Analysis
+Category Analysis
+Inventory Insights
+
+11.7 Date Dimension
+DimDate
+Stores time-based attributes.
+
+Attributes:
+Date
+Year
+Month
+Quarter
+
+Purpose:
+Trend Analysis
+Monthly Reporting
+Quarterly Reporting
+Time Intelligence
+
+11.8 Location Dimension
+DimLocation
+Stores geographic information.
+Attributes:
+City
+Purchase Location
+
+Purpose:
+Regional Analysis
+Location Performance Tracking
+Market Insights
+
+11.9 Benefits of the Star Schema
+The implemented dimensional model provides:
+
+Faster analytical queries
+Simplified reporting
+Better dashboard performance
+Improved data organization
+Enhanced business intelligence capabilities
+
+The Star Schema serves as the foundation for KPI generation, Power BI dashboards, and analytical reporting.
+
+11.10 Business Value
+By separating facts and dimensions, the model enables:
+
+Revenue analysis by product
+Revenue analysis by city
+Customer behavior analysis
+Time-series reporting
+Executive dashboard reporting
+
+This structure supports scalable analytics and aligns with industry-standard data warehousing practices.
+
+
+## 12. AWS Cloud Integration
+
+12.1 Overview
+To demonstrate cloud engineering capabilities and scalable data storage practices, AWS S3 was integrated into the Retail Data Engineering Solution.
+
+AWS S3 acts as the cloud storage layer for processed datasets, KPI outputs, logs, and analytical artifacts.
+
+The implementation demonstrates how cloud storage can be incorporated into a modern data engineering pipeline.
+
+12.2 Cloud Architecture
+
+![AWS Cloud Architecture](../architecture/aws_cloud_architecture.png)
+
+12.3 AWS Services Used
+
+| Service   | Purpose                        |
+| --------- | ------------------------------ |
+| Amazon S3 | Cloud Storage                  |
+| Boto3     | Python SDK for AWS Integration |
+| AWS CLI   | Cloud Configuration and Access |
+
+12.4 S3 Bucket Configuration
+Bucket Name:
+retail-data-engineering-keerthana
+
+Purpose:
+Centralized cloud storage
+Curated dataset persistence
+KPI storage
+Log storage
+Cloud-ready analytics architecture
+
+12.5 S3 Folder Structure
+The bucket was organized into multiple logical layers.
+
+retail-data-engineering-keerthana
+│
+├── raw/
+├── curated/
+├── outputs/
+└── logs/
+
+12.6 Raw Data Layer
+Purpose:
+Store original source files before processing.
+
+Contents:
+Retail Source Datasets
+Product Master Data
+
+Benefits:
+Data traceability
+Recovery support
+Historical preservation
+
+12.7 Curated Data Layer
+Purpose:
+Store analytics-ready datasets generated by the ETL pipeline.
+
+Contents:
+retail_master_curated.csv
+
+Benefits:
+Reporting-ready datasets
+Single source of truth
+Cloud accessibility
+
+12.8 KPI Output Storage
+Generated KPI files are stored within the cloud environment.
+
+Examples:
+kpi_executive_summary.csv
+kpi_category_analysis.csv
+kpi_city_analysis.csv
+kpi_customer_analysis.csv
+kpi_product_analysis.csv
+kpi_payment_analysis.csv
+kpi_time_analysis.csv
+
+Benefits:
+Centralized analytical storage
+Easier sharing and reporting
+
+12.9 Log Storage
+Pipeline execution logs are stored for monitoring and auditing purposes.
+
+Examples:
+pipeline_execution_log.txt
+
+Benefits:
+Traceability
+Error investigation
+Pipeline monitoring
+
+12.10 Python Integration with AWS
+Python scripts were developed to interact with AWS S3.
+
+Scripts Used:
+src/aws_s3_test.py
+src/s3_upload.py
+
+Capabilities:
+Bucket connectivity testing
+Dataset upload automation
+Cloud storage integration
+
+12.11 Boto3 Integration
+The Boto3 SDK was used to establish communication between Python and AWS S3.
+
+Implemented Features:
+Bucket discovery
+File uploads
+Cloud authentication
+Cloud storage management
+
+Benefits:
+Automated cloud operations
+Reduced manual effort
+Scalable architecture
+
+12.12 Cloud Integration with NL-SQL Agent
+The solution supports loading curated datasets from AWS S3 before creating the analytical SQLite database.
+
+Component:
+retail_agent/s3_loader.py
+
+Workflow:
+
+AWS S3
+    ↓
+Curated Dataset
+    ↓
+SQLite Database
+    ↓
+NL-SQL Agent
+
+This demonstrates cloud-ready AI analytics architecture.
+
+12.13 Benefits of Cloud Integration
+The AWS implementation provides:
+
+Scalable storage
+Centralized data management
+Cloud-ready architecture
+Secure data persistence
+Easier future deployment options
+
+The cloud layer enhances the overall solution and demonstrates practical cloud engineering skills beyond the core project requirements.
+
+
+## 13. Power BI Dashboard
+
+
+13.1 Overview
+A comprehensive Power BI dashboard was developed using the curated retail dataset to provide business insights across sales performance, customer behavior, product performance, location trends, payment analysis, time-based trends, and data quality metrics.
+
+The dashboard enables decision-makers to monitor KPIs, identify trends, and analyze business performance through interactive visualizations.
+
+
+13.2 Dashboard Data Source
+
+Source Dataset:
+data/curated/retail_master_curated.csv
+
+Additional KPI Summary:
+data/processed/dq_summary.csv
+The curated dataset was generated through the ETL pipeline after data cleaning, validation, transformation, and KPI generation processes.
+
+
+13.3 Dashboard Pages
+The Power BI solution contains six analytical dashboard pages:
+
+Executive Dashboard
+Product Analysis
+Location Analysis
+Payment & Channel Analysis
+Time Trends Analysis
+Data Quality Dashboard
+
+13.4 Executive Dashboard
+The Executive Dashboard provides a high-level business performance overview.
+
+Key KPIs:
+Total Revenue
+Net Revenue
+Total Orders
+Total Customers
+Average Order Value
+
+Visualizations:
+Revenue by Category
+Revenue by Month
+Revenue by City
+Payment Method Distribution
+
+Screenshot:
+
+![Executive Dashboard](../screenshots/powerbi/Executive Dashboard.png)
+
+Business Insight:
+
+Electronics generated the highest revenue contribution while revenue remained relatively consistent throughout the year with noticeable peaks during specific months.
+
+13.5 Product Analysis Dashboard
+The Product Analysis dashboard evaluates product and category performance.
+
+Visualizations:
+Revenue by Product Category
+Net Revenue by Category
+Quantity Sold by Category
+Top Products by Revenue
+Top Products by Quantity Sold
+Product Performance Summary Table
+
+Screenshot:
+
+![Product Analysis](../screenshots/powerbi/Product Analysis.png)
+
+Business Insight:
+
+Electronics emerged as the highest revenue-generating category, while Laptop was identified as the top-performing product by revenue.
+
+13.6 Location Analysis Dashboard
+The Location Analysis dashboard provides city-wise business performance metrics.
+
+Visualizations:
+Revenue by City
+Orders by City
+Revenue by Purchase Location
+Average Order Value by City
+City Performance Summary
+
+Screenshot:
+
+![Location Analysis](../screenshots/powerbi/Location Analysis.png)
+
+Business Insight:
+
+Chennai generated the highest revenue among all cities, while online and offline purchase channels contributed nearly equally to total revenue.
+
+13.7 Payment & Channel Dashboard
+The Payment Analysis dashboard evaluates transaction behavior across payment methods.
+
+Visualizations:
+Orders by Payment Method
+Payment Method Distribution
+Revenue by Payment Method
+Net Revenue by Payment Method
+Payment Performance Summary
+
+Screenshot:
+
+![Payment & Channel](../screenshots/powerbi/Payment & Channel.png)
+
+Business Insight:
+
+Card payments contributed the highest overall revenue, while payment distribution remained balanced across all payment modes.
+
+13.8 Time Trends Dashboard
+The Time Trends dashboard analyzes revenue and order patterns over time.
+
+Visualizations:
+Revenue Trend
+Net Revenue Trend
+Orders Trend
+Revenue vs Net Revenue Comparison
+Monthly Performance Summary
+
+Screenshot:
+
+![Time Trends](../screenshots/powerbi/Time Trends.png)
+
+Business Insight:
+
+Revenue demonstrated stable growth patterns throughout the year with seasonal fluctuations visible across monthly sales cycles.
+
+13.9 Data Quality Dashboard
+The Data Quality dashboard summarizes data validation and quality improvements performed during the ETL process.
+
+KPIs:
+Total Records
+Unique Customers
+Repeat Customers
+
+Quality Metrics:
+Data Completeness
+Duplicate Rows Removed
+Missing Prices Fixed
+Negative Rows Removed
+PII Masking Status
+
+Screenshot:
+
+![Data Quality](../screenshots/powerbi/DataQuality.png)
+
+Business Insight:
+The final curated dataset achieved high data quality standards through duplicate removal, missing value treatment, negative value correction, and customer data masking.
+
+13.10 Dashboard Benefits
+The Power BI dashboard provides:
+Executive-level KPI monitoring
+Product performance analysis
+Location-based insights
+Payment behavior analysis
+Trend analysis over time
+Data quality monitoring
+Interactive reporting for decision-making
+
+The dashboard serves as the final business intelligence layer of the retail data engineering solution.
+
+
+## 14. NL-SQL Agent
+14.1 Overview
+
+To enhance business accessibility and self-service analytics capabilities, an AI-powered Natural Language to SQL (NL-SQL) Agent was developed.
+
+The agent enables business users to ask questions in natural language and automatically retrieve insights from the retail dataset without writing SQL queries manually.
+
+The solution was implemented using Streamlit, SQLite, and a custom SQL query generation framework.
+
+14.2 Agent Workflow
+
+![NL-SQL Agent Workflow](../architecture/nl_sql_agent_workflow.png)
+
+14.3 Technology Stack
+
+| Component         | Technology                     |
+| ----------------- | ------------------------------ |
+| User Interface    | Streamlit                      |
+| Database          | SQLite                         |
+| Data Source       | retail_master_curated.csv      |
+| Query Engine      | SQL                            |
+| Visualization     | Streamlit Charts               |
+| Cloud Integration | AWS S3 (Optional Data Loading) |
+
+14.4 Agent Architecture
+The NL-SQL Agent follows the workflow below:
+
+User Question
+      ↓
+Prompt Mapping
+      ↓
+SQL Query Generation
+      ↓
+SQLite Database Execution
+      ↓
+Result Retrieval
+      ↓
+Visualization
+      ↓
+Business Insight
+
+The architecture allows business users to access analytical information without requiring technical SQL knowledge.
+
+14.5 Database Layer
+The agent uses a SQLite analytical database generated from the curated dataset.
+
+Database:
+retail_agent/retail.db
+
+Creation Script:
+retail_agent/create_db.py
+
+This database serves as the analytical layer for all business queries.
+
+14.6 Supported Query Patterns
+The current version of the agent supports seven predefined business query patterns.
+
+Supported Questions:
+Revenue by City
+Revenue by Category
+Top Customers
+Top Products
+Revenue by Payment Method
+Monthly Revenue
+Pending Payments
+
+These queries represent common business reporting requirements.
+
+14.7 Query Execution Process
+The query execution process consists of:
+
+User enters a business question.
+The question is mapped to a predefined SQL template.
+SQL is generated automatically.
+Query executes against SQLite.
+Results are displayed in tabular format.
+Business visualizations are generated.
+Insights are presented to the user.
+
+This approach simplifies data exploration and reporting.
+
+14.8 Visualization Layer
+The agent automatically generates:
+
+Tabular Results
+KPI Metrics
+Bar Charts
+Business Insights
+
+This improves usability and enables faster interpretation of results.
+
+14.9 Cloud Integration Support
+The agent supports loading curated datasets from AWS S3.
+
+Component:
+retail_agent/s3_loader.py
+
+Workflow:
+
+AWS S3
+     ↓
+Curated Dataset
+     ↓
+SQLite Database
+     ↓
+NL-SQL Agent
+
+This demonstrates cloud-ready analytical capabilities.
+
+14.10 Benefits of the NL-SQL Agent
+The implemented solution provides:
+
+Self-service analytics
+Faster business reporting
+Reduced SQL dependency
+Improved user accessibility
+Interactive business insights
+AI-assisted data exploration
+
+The NL-SQL Agent extends traditional dashboard reporting by enabling conversational access to business data.
+
+14.11 Future Enhancements
+Potential future improvements include:
+
+LLM-powered dynamic SQL generation
+OpenAI or Gemini integration
+Advanced conversational analytics
+Voice-enabled querying
+Real-time data refresh
+Multi-database support
+
+
+## 15. Assumptions
+During the design and implementation of this retail data engineering solution, several assumptions were made to ensure consistent processing, reporting, and analytical outcomes.
+
+15.1 Dataset Assumptions
+The provided retail datasets contain valid transactional records.
+Customer IDs uniquely identify customers.
+Product IDs uniquely identify products.
+Transaction IDs are expected to be unique after duplicate removal.
+Revenue calculations are based on transaction-level sales records.
+
+15.2 Data Quality Assumptions
+Missing price values can be estimated and corrected using predefined business rules.
+Negative revenue and invalid transaction values represent data quality issues and should be removed.
+Duplicate transactions are considered unintentional data duplication.
+Null values in critical business fields require cleaning before analytical processing.
+
+15.3 Business Assumptions
+Revenue is calculated as:
+Revenue = Price × Quantity
+
+Discount Amount is calculated as:
+Discount Amount = Revenue × Discount Percentage
+
+Net Revenue is calculated as:
+Net Revenue = Revenue − Discount Amount
+
+Customers purchasing multiple times are considered repeat customers.
+Payment status marked as successful represents completed transactions.
+
+15.4 Privacy Assumptions
+To protect customer privacy:
+Customer email addresses were masked.
+Customer phone numbers were masked.
+Personally Identifiable Information (PII) was not exposed in analytical dashboards.
+Data masking was applied before final reporting and visualization.
+
+15.5 Reporting Assumptions
+The curated dataset serves as the single source of truth for reporting.
+KPI calculations are generated from cleaned and validated data only.
+Power BI dashboards consume curated analytical data rather than raw source data.
+Dashboard metrics represent processed business-ready information.
+
+15.6 Cloud Assumptions
+AWS S3 is used as the cloud storage layer for curated datasets.
+Uploaded datasets are assumed to be accessible through valid AWS credentials.
+Cloud storage is used for demonstration purposes and future scalability.
+Power BI dashboard consumption remains local in the current implementation.
+
+15.7 NL-SQL Agent Assumptions
+Users select questions from predefined business query patterns.
+SQL queries are generated through predefined templates.
+SQLite serves as the analytical database layer.
+The agent operates on curated data only.
+
+These assumptions helped standardize data processing, improve data quality, and ensure reliable analytical outputs throughout the project.
+
+
+## 16. Future Enhancements
+The current solution successfully implements an end-to-end retail data engineering pipeline with reporting, cloud integration, and AI-assisted analytics. However, several enhancements can further improve scalability, automation, and business value.
+
+16.1 Data Engineering Enhancements
+Future improvements can include:
+Incremental data loading instead of full dataset processing.
+Workflow orchestration using Apache Airflow.
+Automated scheduling for daily pipeline execution.
+Support for real-time streaming data ingestion.
+Integration with enterprise data warehouses.
+
+These enhancements would improve scalability and production readiness.
+
+16.2 Cloud Enhancements
+The current implementation uses AWS S3 as cloud storage.
+
+Future cloud enhancements include:
+AWS Glue for managed ETL processing.
+AWS Lambda for serverless pipeline execution.
+Amazon Redshift for analytical warehousing.
+AWS Athena for serverless querying.
+CloudWatch monitoring and alerting.
+
+These services would provide a fully cloud-native architecture.
+
+16.3 Power BI Enhancements
+The dashboard can be enhanced by:
+Publishing reports to Power BI Service.
+Configuring automated refresh schedules.
+Implementing row-level security.
+Adding drill-through analytics.
+Creating executive mobile dashboards.
+
+These improvements would enhance accessibility and business adoption.
+
+16.4 Data Quality Enhancements
+Future data quality improvements include:
+Automated anomaly detection.
+Advanced validation frameworks.
+Data lineage tracking.
+Data quality scorecards.
+Rule-based monitoring alerts.
+
+These features would strengthen governance and reliability.
+
+16.5 NL-SQL Agent Enhancements
+The current NL-SQL Agent supports predefined business queries.
+
+Future enhancements include:
+OpenAI or Gemini integration.
+Dynamic SQL generation using LLMs.
+Conversational analytics.
+Multi-turn business questioning.
+Voice-enabled querying.
+ Context-aware business recommendations.
+
+These capabilities would transform the solution into a more intelligent analytical assistant.
+
+16.6 Advanced Analytics Enhancements
+Future analytical capabilities may include:
+Customer segmentation models.
+Sales forecasting.
+Demand prediction.
+Recommendation systems.
+Churn analysis.
+ Profitability analysis.
+
+These advanced analytics features would provide greater strategic business value.
+
+16.7 Enterprise Scalability Roadmap
+For large-scale enterprise deployment, the solution can evolve into:
+Cloud-native Data Lake Architecture.
+Distributed ETL Processing.
+Enterprise Data Warehouse.
+AI-Powered Analytics Platform.
+Self-Service Business Intelligence Portal.
+
+This roadmap would enable the solution to support significantly larger datasets and business workloads.
+
+The proposed enhancements provide a clear path toward transforming the current solution into a production-grade, enterprise-scale data engineering and analytics platform.
+
+
+## 17. Conclusion
+This project successfully implemented an end-to-end Retail Data Engineering Solution that transforms raw retail transaction data into a reliable, analytics-ready dataset capable of supporting business intelligence and decision-making.
+
+The solution addressed key business challenges related to data quality, standardization, reporting, and accessibility by implementing a structured ETL pipeline, data validation framework, transformation logic, KPI generation layer, and dimensional data modeling approach.
+
+Key achievements of the project include:
+
+- Development of a scalable ETL pipeline.
+- Comprehensive data cleaning and validation framework.
+- Implementation of PII masking for customer privacy protection.
+- Generation of business-focused KPIs and analytical datasets.
+- Creation of a Star Schema data model for optimized reporting.
+- Development of interactive Power BI dashboards.
+- Integration of AWS S3 cloud storage.
+- Implementation of an AI-powered NL-SQL Agent for self-service analytics.
+
+The final solution enables business users to analyze sales performance, customer behavior, product trends, regional performance, payment preferences, and overall business health through both visual dashboards and natural language queries.
+
+From a data engineering perspective, the project demonstrates key competencies in:
+
+- Data Ingestion
+- Data Cleaning
+- Data Quality Management
+- Data Transformation
+- Data Modeling
+- KPI Development
+- Business Intelligence
+- Cloud Integration
+- Analytics Engineering
+
+The architecture has been designed with scalability, maintainability, and future extensibility in mind, providing a strong foundation for enterprise-level retail analytics applications.
+
+Overall, the project successfully fulfills all business and technical objectives outlined in the use case while demonstrating practical data engineering, cloud, analytics, and AI integration capabilities.

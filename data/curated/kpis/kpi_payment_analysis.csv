@@ -1,0 +1,5 @@
+payment_method,payment_status,Revenue,Orders
+Card,successful,389193000.0,1994
+Cash,successful,384531300.0,2003
+NetBanking,successful,352394500.0,1901
+UPI,successful,375293800.0,2016
