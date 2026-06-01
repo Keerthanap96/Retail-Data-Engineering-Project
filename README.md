@@ -303,8 +303,7 @@ streamlit run retail_agent/app.py
 
 Complete project documentation is available at:
 
-documentation/Retail_Data_Engineering_Documentation.md
-
+📄 [Retail Data Engineering Documentation](documentation/Retail_Data_Engineering_Documentation.md)
 ---
 
 ## Future Enhancements
