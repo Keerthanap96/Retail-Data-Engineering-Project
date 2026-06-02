@@ -104,6 +104,7 @@ The data flow describes how retail transaction data moves through the various st
 The objective of the data flow is to ensure that only clean, validated, and business-ready data reaches the reporting and analytics layers.
 
 4.2 Data Flow Diagram
+
 ![Data Flow Diagram](../architecture/data_flow_diagram.png)
 
 4.3 Data Flow Stages
@@ -112,27 +113,26 @@ Stage 1 — Raw Data Acquisition
 The retail transaction dataset is collected from source files and stored in the raw data layer.
 
 Output:
-[data/raw/](../data/raw)
+data/raw/
 
 Stage 2 — Data Profiling
 The profiling process analyzes dataset structure, data types, missing values, duplicates, and statistical distributions.
 
 Script Used:
-[src/profiling.py](../src/profiling.py)
+src/profiling.py
 
 Output:
-[logs/](../logs)
-
-[outputs/](../outputs)
+logs/
+outputs/
 
 Stage 3 — Data Cleaning
 The cleaning process removes invalid records, handles missing values, standardizes formats, and prepares the dataset for business processing.
 
 Script Used:
-[src/data_cleaning.py](../src/data_cleaning.py)
+src/data_cleaning.py
 
 Output:
-[outputs/cleaning_summary.csv](../outputs/cleaning_summary.csv)
+outputs/cleaning_summary.csv
 
 Stage 4 — Data Quality Validation
 Data quality checks are performed to validate completeness, consistency, uniqueness, and integrity.
@@ -144,12 +144,9 @@ Revenue validation
 Customer data validation
 
 Scripts Used:
-[src/data_quality_audit.py](../src/data_quality_audit.py)
-
-[src/business_validation_audit.py](../src/business_validation_audit.py)
-
-[src/duplicate_audit.py](../src/duplicate_audit.py)
-
+src/data_quality_audit.py
+src/business_validation_audit.py
+src/duplicate_audit.py
 Stage 5 — Data Transformation
 
 Business calculations and derived fields are generated.
@@ -164,7 +161,7 @@ Quarter
 Masked Customer Information
 
 Script Used:
-[src/transformation.py](../src/transformation.py)
+src/transformation.py
 
 Stage 6 — KPI Generation
 Business KPIs are generated to support dashboard reporting and analytical insights.
@@ -178,24 +175,23 @@ Time Trend KPIs
 Data Quality KPIs
 
 Script Used:
-[src/kpi_generation.py](../src/kpi_generation.py)
+src/kpi_generation.py
 
 Stage 7 — Curated Dataset Creation
 The final transformed dataset is stored in the curated layer for reporting and analytics.
 
 Output:
-[data/curated/retail_master_curated.csv](../data/curated/retail_master_curated.csv)
+data/curated/retail_master_curated.csv
 
 Stage 8 — AWS Cloud Storage
 The curated dataset is uploaded to AWS S3 to demonstrate cloud integration and scalable storage.
 
 Script Used:
-[src/s3_upload.py](../src/s3_upload.py)
+src/s3_upload.py
 
 Storage Location:
 AWS S3 Bucket
 retail-data-engineering-keerthana
-[src/aws_s3_test.py](../src/aws_s3_test.py)
 
 Stage 9 — Analytics Consumption
 The processed dataset is consumed by:
@@ -377,7 +373,7 @@ Standardize column formats.
 Prepare the consolidated dataset for profiling and validation.
 
 Script Used:
-[src/ingestion.py](../src/ingestion.py)
+src/ingestion.py
 
 6.4 Data Consolidation
 The ingestion layer combines transaction records from multiple sources and enriches them with product information.
@@ -431,7 +427,7 @@ Standardize product information
 Improve overall dataset consistency
 
 Script Used:
-[src/data_cleaning.py](../src/data_cleaning.py)
+src/data_cleaning.py
 
 7.3 Missing Value Handling
 The retail dataset contained missing values in product pricing information.
@@ -547,12 +543,9 @@ Validity
 Uniqueness
 
 Scripts Used:
-[src/data_quality_audit.py](../src/data_quality_audit.py)
-
-[src/duplicate_audit.py](../src/duplicate_audit.py)
-
-[src/business_validation_audit.py](../src/business_validation_audit.py)
-
+src/data_quality_audit.py
+src/duplicate_audit.py
+src/business_validation_audit.py
 
 8.2 Data Quality Framework
 The implemented framework evaluates the dataset against multiple quality dimensions.
@@ -648,11 +641,9 @@ Business rule violations were removed from the dataset.
 The validation framework generates audit outputs to support transparency and monitoring.
 
 Examples:
-[outputs/cleaning_summary.csv](../outputs/cleaning_summary.csv)
-
-[outputs/duplicate_transactions.csv](../outputs/duplicate_transactions.csv)
-
-[logs/pipeline_execution_log.txt](../logs/pipeline_execution_log.txt)
+outputs/cleaning_summary.csv
+outputs/duplicate_transactions.csv
+logs/pipeline_execution_log.txt
 
 These outputs provide visibility into the quality of processed data.
 
@@ -678,7 +669,7 @@ This stage enriches the dataset by generating calculated metrics, time-based att
 The transformation process improves the analytical value of the dataset and enables business reporting, KPI generation, and dashboard analytics.
 
 Script Used:
-[src/transformation.py](../src/transformation.py)
+src/transformation.py
 
 9.2 Transformation Objectives
 The transformation layer was designed to:
@@ -816,7 +807,7 @@ Key Performance Indicators (KPIs) were generated to measure business performance
 The KPI generation layer transforms transaction-level data into aggregated business metrics that support executive reporting and decision-making.
 
 Script Used:
-[src/kpi_generation.py](../src/kpi_generation.py)
+src/kpi_generation.py
 
 10.2 KPI Framework
 The KPI framework was designed to answer key business questions such as:
@@ -839,7 +830,7 @@ Average Revenue Per Transaction
 Average Revenue Per Customer
 
 Output:
-[data/curated/kpis/kpi_executive_summary.csv](../data/curated/kpis/kpi_executive_summary.csv)
+data/curated/kpis/kpi_executive_summary.csv
 
 10.4 Category Analysis KPIs
 Category-level KPIs measure the contribution of each product category.
@@ -856,7 +847,7 @@ Clothing
 Home Appliances
 
 Output:
-[data/curated/kpis/kpi_category_analysis.csv](../data/curated/kpis/kpi_category_analysis.csv)
+data/curated/kpis/kpi_category_analysis.csv
 
 10.5 City Analysis KPIs
 Location-based KPIs help evaluate regional business performance.
@@ -874,7 +865,7 @@ Mumbai
 Delhi
 
 Output:
-[data/curated/kpis/kpi_city_analysis.csv](../data/curated/kpis/kpi_city_analysis.csv)
+data/curated/kpis/kpi_city_analysis.csv
 
 10.6 Product Analysis KPIs
 Product KPIs identify top-performing and low-performing products.
@@ -885,7 +876,7 @@ Quantity Sold by Product
 Product Ranking
 
 Output:
-[data/curated/kpis/kpi_product_analysis.csv](../data/curated/kpis/kpi_product_analysis.csv)
+data/curated/kpis/kpi_product_analysis.csv
 
 10.7 Customer Analysis KPIs
 Customer KPIs help understand purchasing behavior and customer value.
@@ -896,7 +887,7 @@ Transaction Frequency
 Customer Ranking
 
 Output:
-[data/curated/kpis/kpi_customer_analysis.csv](../data/curated/kpis/kpi_customer_analysis.csv)
+data/curated/kpis/kpi_customer_analysis.csv
 
 10.8 Payment Analysis KPIs
 Payment KPIs provide visibility into customer payment preferences.
@@ -913,7 +904,7 @@ Cash
 Net Banking
 
 Output:
-[data/curated/kpis/kpi_payment_analysis.csv](../data/curated/kpis/kpi_payment_analysis.csv)
+data/curated/kpis/kpi_payment_analysis.csv
 
 10.9 Time Analysis KPIs
 Time-based KPIs support trend analysis and performance monitoring.
@@ -925,7 +916,7 @@ Transaction Trends
 Seasonal Patterns
 
 Output:
-[data/curated/kpis/kpi_time_analysis.csv](../data/curated/kpis/kpi_time_analysis.csv)
+data/curated/kpis/kpi_time_analysis.csv
 
 10.10 Data Quality KPIs
 Data quality metrics monitor the health of the dataset.
@@ -937,27 +928,19 @@ Invalid Transactions
 Data Quality Score
 
 Output:
-[data/curated/kpis/kpi_data_quality.csv](../data/curated/kpis/kpi_data_quality.csv)
+data/curated/kpis/kpi_data_quality.csv
+
 10.11 KPI Outputs
 The KPI layer generates the following analytical datasets:
 
-**The KPI layer generates the following analytical datasets:**
-
-[data/curated/kpis/kpi_executive_summary.csv](../data/curated/kpis/kpi_executive_summary.csv)
-
-[data/curated/kpis/kpi_category_analysis.csv](../data/curated/kpis/kpi_category_analysis.csv)
-
-[data/curated/kpis/kpi_city_analysis.csv](../data/curated/kpis/kpi_city_analysis.csv)
-
-[data/curated/kpis/kpi_product_analysis.csv](../data/curated/kpis/kpi_product_analysis.csv)
-
-[data/curated/kpis/kpi_customer_analysis.csv](../data/curated/kpis/kpi_customer_analysis.csv)
-
-[data/curated/kpis/kpi_payment_analysis.csv](../data/curated/kpis/kpi_payment_analysis.csv)
-
-[data/curated/kpis/kpi_time_analysis.csv](../data/curated/kpis/kpi_time_analysis.csv)
-
-[data/curated/kpis/kpi_data_quality.csv](../data/curated/kpis/kpi_data_quality.csv)
+kpi_executive_summary.csv
+kpi_category_analysis.csv
+kpi_city_analysis.csv
+kpi_product_analysis.csv
+kpi_customer_analysis.csv
+kpi_payment_analysis.csv
+kpi_time_analysis.csv
+kpi_data_quality.csv
 
 10.12 Business Value
 
@@ -1265,7 +1248,7 @@ The dashboard enables decision-makers to monitor KPIs, identify trends, and anal
 13.2 Dashboard Data Source
 
 Source Dataset:
-[data/curated/retail_master_curated.csv](../data/curated/retail_master_curated.csv)
+data/curated/retail_master_curated.csv
 
 Additional KPI Summary:
 data/processed/dq_summary.csv
